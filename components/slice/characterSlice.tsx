@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AppThunk } from "@/pages/store/store";
-import { Character } from "@/pages/components/modelos/character";
+import { AppThunk } from "@/components/store/store";
+import { Character } from "@/components/modelos/character";
 
 interface CharacterState {
   data: Character[];

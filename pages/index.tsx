@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCharacter } from '@/pages/slice/characterSlice';
-import { RootState } from '@/pages/store/store';
-import { Character } from '@/pages/components/modelos/character';
-import CharacterList from './components/CharacterList'
+import { fetchCharacter } from '@/components/slice/characterSlice';
+import { RootState } from '@/components/store/store';
+import CharacterList from '../components/CharacterList'
 
 export default function Home() {
   const dispatch = useDispatch();
