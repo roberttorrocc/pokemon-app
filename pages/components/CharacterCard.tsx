@@ -1,4 +1,4 @@
-import {Character} from 'modelos/character'
+import {Character} from '@/pages/components/modelos/character'
 
 type CharacterCardProps={
     character: Character
