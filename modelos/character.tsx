@@ -1,4 +1,4 @@
 export interface Character {
-    name: String;
-    url: String;
+    name: string;
+    image: string;
   }
