@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { dispatchDataCharacter } from "@/components/slice/characterSlice";
+import { dispatchDataCharacter } from "components/slice/characterSlice";
 import { RootState } from "components/store/store";
 import { ICharacter } from "components/models/ICharacter";
 import {CharacterCard} from './CharacterCard'
@@ -22,8 +22,7 @@ function CharacterList() {
         {error && <p>{error}</p>}
         {!loading &&
           data.map((character: ICharacter, index: number) => (
-            <CharacterCard key={index} character={character}/>
-              
+            <CharacterCard key={index} character={character}/> 
           ))}
       </div>
     
