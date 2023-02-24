@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dispatchDataCharacter } from "@/components/slice/characterSlice";
-import { RootState } from "@/components/store/store";
-import { ICharacter } from "@/components/models/ICharacter";
+import { RootState } from "components/store/store";
+import { ICharacter } from "components/models/ICharacter";
 import {CharacterCard} from './CharacterCard'
 
 function CharacterList() {
