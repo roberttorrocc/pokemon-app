@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk } from "@/components/store/store";
-import { Character } from "@/components/modelos/character";
+import { ICharacter } from "@/components/models/ICharacter";
 
 interface CharacterState {
-  data: Character[];
+  data: ICharacter[];
   loading: boolean;
   error: string | null;
 }
@@ -18,7 +18,7 @@ const characterSlice = createSlice({
   name: "personajes",
   initialState,
   reducers: {
-    setData: (state, action: PayloadAction<Character[]>) => {
+    setData: (state, action: PayloadAction<ICharacter[]>) => {
       state.data = action.payload;
       state.loading = false;
       state.error = null;

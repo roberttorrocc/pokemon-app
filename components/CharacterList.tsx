@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCharacter } from "@/components/slice/characterSlice";
 import { RootState } from "@/components/store/store";
-import { Character } from "@/components/modelos/character";
+import { ICharacter } from "@/components/models/ICharacter";
 import {CharacterCard} from './CharacterCard'
 
 function CharacterList() {
@@ -21,7 +21,7 @@ function CharacterList() {
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
         {!loading &&
-          data.map((character: Character, index: number) => (
+          data.map((character: ICharacter, index: number) => (
             <CharacterCard key={index} character={character}/>
               
           ))}

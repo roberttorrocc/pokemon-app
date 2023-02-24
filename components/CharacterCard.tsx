@@ -1,7 +1,7 @@
-import {Character} from '@/components/modelos/character'
+import {ICharacter} from '@/components/models/ICharacter'
 
 type CharacterCardProps={
-    character: Character
+    character: ICharacter
 }
 
 export function CharacterCard({character}:CharacterCardProps){
