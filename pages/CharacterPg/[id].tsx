@@ -1,15 +1,35 @@
 import { useRouter } from "next/router";
-import { ICharacter } from "@/components/models/ICharacter";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { dispatchDataCharacter } from "components/slice/characterSlice";
+import { RootState } from "components/store/store";
+import { ICharacter } from "components/models/ICharacter";
 
 function CharacterCard() {
   const router = useRouter();
   const { id } = router.query;
-  console.log(id);
+
+  const dispatch = useDispatch();
+  const { data, loading, error } = useSelector(
+    (state: RootState) => state.characters
+  );
+
+  useEffect(() => {
+    dispatch(dispatchDataCharacter() as any);
+  }, [dispatch]);
+
+  const character = data.find(
+    (character: ICharacter) => character.id === Number(id)
+  );
 
   return (
     <div>
-      <h1 className="text-gray-100">ads{id}</h1>
-      <p className="text-gray-100">{id}</p>
+      {loading && <p className="text-white">Loading...</p>}
+      {error && <p className="text-white">{error}</p>}
+      {!loading && character && (
+        <h1 className="text-white">{character.name}</h1>
+      )}
+      {!character && <p className="text-white">Character not found</p>}
     </div>
   );
 }
