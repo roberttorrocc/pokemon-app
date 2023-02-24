@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AppThunk } from "@/components/store/store";
-import { ICharacter } from "@/components/models/ICharacter";
+import { AppThunk } from "components/store/store";
+import { ICharacter } from "components/models/ICharacter";
+import {fetchCharacter} from 'components/fetchs/fetchChracters'
 
 interface CharacterState {
   data: ICharacter[];
@@ -38,10 +39,7 @@ export const { setData, setLoading, setError } = characterSlice.actions;
 
 export default characterSlice.reducer;
 
-export const fetchCharacter = (): AppThunk => async (dispatch) => {
+export const dispatchDataCharacter = (): AppThunk => async (dispatch) => {
   dispatch(setLoading());
-
-  const response = await fetch("https://rickandmortyapi.com/api/character");
-  const data = await response.json();
-  dispatch(setData(data.results));
+  dispatch(setData( await fetchCharacter()));
 };

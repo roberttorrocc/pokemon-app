@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCharacter } from "@/components/slice/characterSlice";
+import { dispatchDataCharacter } from "@/components/slice/characterSlice";
 import { RootState } from "@/components/store/store";
 import { ICharacter } from "@/components/models/ICharacter";
 import {CharacterCard} from './CharacterCard'
@@ -8,11 +8,11 @@ import {CharacterCard} from './CharacterCard'
 function CharacterList() {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector(
-    (state: RootState) => state.episodios
+    (state: RootState) => state.characters
   );
 
   useEffect(() => {
-    dispatch(fetchCharacter() as any);
+    dispatch(dispatchDataCharacter() as any);
   }, [dispatch]);
 
   return (
