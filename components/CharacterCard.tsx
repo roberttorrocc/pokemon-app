@@ -12,8 +12,8 @@ export function CharacterCard({ character }: { character: ICharacter }) {
       >
         <img src={character.image} />
       </div>
-      <h2 className="text-slate-700">{character.name}</h2>
 
+      <h2 className="text-slate-700">{character.name}</h2>
     </article>
   );
 }
