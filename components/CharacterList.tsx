@@ -17,7 +17,7 @@ function CharacterList() {
 
   return (
     
-      <div className="grid grid-cols-3 gap-2 content-center">
+      <div className="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
         {!loading &&
