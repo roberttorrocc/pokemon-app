@@ -10,9 +10,10 @@ export function CharacterCard({ character }: { character: ICharacter }) {
           Router.push(`CharacterPg/[id]`, `CharacterPg/${character.id}`)
         }
       >
-        <h1>{character.name}</h1>
         <img src={character.image} />
       </div>
+      <h2 className="text-slate-700">{character.name}</h2>
+
     </article>
   );
 }
