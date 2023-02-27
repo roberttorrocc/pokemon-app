@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { dispatchDataCharacter } from "components/slice/characterSlice";
 import { RootState } from "components/store/store";
 import { ICharacter } from "components/models/ICharacter";
+import { CharacterInformation } from "components/CharacterInformation";
 
 function CharacterCard() {
   const router = useRouter();
@@ -23,12 +24,10 @@ function CharacterCard() {
   );
 
   return (
-    <div>
+    <div className="flex items-center justify-center">
       {loading && <p className="text-white">Loading...</p>}
       {error && <p className="text-white">{error}</p>}
-      {!loading && character && (
-        <h1 className="text-white">{character.name}</h1>
-      )}
+      {!loading && character && <CharacterInformation character={character} />}
       {!character && <p className="text-white">Character not found</p>}
     </div>
   );
