@@ -1,9 +1,10 @@
-import {ICharacter} from 'components/models/ICharacter'
+import { ICharacter } from "components/models/ICharacter";
 
-export async function fetchCharacter(): Promise<ICharacter[]>{
-    const response = await fetch("https://rickandmortyapi.com/api/character");
-    const data = await response.json();
-    
-    return data.results;
-};
+export async function fetchCharacter(): Promise<ICharacter[]> {
+  const responsePg1 = await fetch("https://rickandmortyapi.com/api/character/?page=1");
+  const responsePg2 = await fetch("https://rickandmortyapi.com/api/character/?page=2");
 
+  const [data1, data2] = await Promise.all([responsePg1,responsePg2].map(response => response.json()));
+
+  return [...data1.results, ...data2.results];
+}
