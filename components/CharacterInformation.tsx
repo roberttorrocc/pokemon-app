@@ -26,7 +26,7 @@ export function CharacterInformation({ character }: { character: ICharacter }) {
         <span>species: {character.species}</span>
         <span>Origin: {character.origin.name}</span>
         {character.episode?.map((episode: string, index: number) => (
-            <span>{(episode)}</span>
+            <span key={index}>{(episode)}</span>
          
         ))}
       </div>
