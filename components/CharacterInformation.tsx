@@ -1,23 +1,25 @@
 import { ICharacter } from "@/components/models/ICharacter";
-import {IEpisode} from 'components/models/IEpisode'
-import {fetchEpisode} from 'components/fetchs/fetchEpisodes'
+import { IEpisode } from "components/models/IEpisode";
+import { fetchEpisode } from "components/fetchs/fetchEpisodes";
+import { useQuery } from "react-query";
 
-
-/*async function asd(params:string ) {
-  return await fetchEpisode(params);
-}
-//const promiseEpisodes:IEpisode[] = await fetchEpisode("asd");*/
+let responses: Response[];
 
 export function CharacterInformation({ character }: { character: ICharacter }) {
-   /*let episodes: IEpisode[] = asd(character.episode[1]);
-    //character.episode.map()
-    character.episode.forEach(element => {
-      fetchEpisode(element);
-    });*/
+  /*
+  character.episode.forEach(async (element) => {
+    responses.push(await fetch(element));
+  });*/
 
-  
-  
-    return (
+  const getEpisodes = async () => {
+    const res = await fetch(character.episode[1]);
+    const episode = await res.json();
+    return episode;
+  };
+
+  const { data, isLoading, isError, error } = useQuery("episode",getEpisodes);
+
+  return (
     <div className="w-2/3 bg-gray-800 text-white z-50 py-4 px-8 rounded-lg">
       <img src={character.image} />
       <h1 className="text-4xl">{character.name}</h1>
@@ -25,10 +27,10 @@ export function CharacterInformation({ character }: { character: ICharacter }) {
         <span>Status: {character.status}</span>
         <span>species: {character.species}</span>
         <span>Origin: {character.origin.name}</span>
-        {character.episode?.map((episode: string, index: number) => (
-            <span key={index}>{(episode)}</span>
-         
-        ))}
+        {isLoading && <span>Loading...</span>}
+        {isError && <span>{isError}</span>}
+        {!isLoading && !isError && <span>{data.episode}</span>}
+
       </div>
     </div>
   );
